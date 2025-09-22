@@ -18,6 +18,12 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   RUST_BACKTRACE: full
+  SCCACHE_ENDPOINT: "https://ba6ee3674b03f08481e57ff9992c601e.r2.cloudflarestorage.com"
+  SCCACHE_REGION: "auto"
+  SCCACHE_BUCKET: "sccache"
+  AWS_ACCESS_KEY_ID: ${{ secrets.SCCACHE_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SCCACHE_ACCESS_KEY }}
+  RUSTC_WRAPPER: "sccache"
 
 jobs:
   matrices:
@@ -95,9 +101,8 @@ jobs:
             ~/.foundry/cache
             ~/.config/.foundry/cache
           key: rpc-cache-${{ hashFiles('crates/forge/tests/rpc-cache-keyfile') }}
-      - uses: Swatinem/rust-cache@f13886b937689c021905a6b90929199931d60db1 # v2
-        with:
-          cache-on-failure: true
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@7d986dd989559c6ecdb630a3fd2557667be217ad # v0.0.9
       - name: Setup Git config
         run: |
           git config --global user.name "GitHub Actions Bot"
