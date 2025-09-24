@@ -33,7 +33,7 @@ foundryup --list
 To switch between different versions and **use**:
 
 ```sh
-foundryup --use nightly-00efa0d5965269149f374ba142fb1c3c7edd6c94
+foundryup --use nightly-00efa0d5965foundryup --install nightly269149f374ba142fb1c3c7edd6c94
 ```
 
 To install a specific **branch** (in this case the `release/0.1.0` branch's latest commit):
