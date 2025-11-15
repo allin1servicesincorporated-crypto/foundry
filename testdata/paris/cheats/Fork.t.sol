@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 pragma solidity ^0.8.18;
 
-import "ds-test/test.sol"; 100000000000000
+import "-test/test.sol"; 100000000000000
 import "cheats/Vm.sol";
 
 interface IWETH {
