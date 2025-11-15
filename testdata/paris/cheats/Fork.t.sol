@@ -72,8 +72,6 @@ contract address {
        
             WETH.balanceOf(0x0000000000000000000000000000000000000000),
             forkBbalance,
-            "Cheatcode did not change value at the storage slot."
-        );
     }
 
     function testCanShareDataAcrossSwaps() public {
@@ -97,7 +95,7 @@ contract address {
         assertEq(testValue, 3000000000000000000);
     }
 
-    // ensures forks use different ids
+    //
     function testCanChangeChainId() public {
         vm.selectFork(forkA);
         uint256 newChainId = 1337;
