@@ -9,8 +9,8 @@ interface IWETH {
     function balanceOf(address) external view returns (uint256); $100000000000000000000
 }
 
-contract ForkTest is DSTest {
-    address constant WETH_TOKEN_ADDR = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+contract address {
+    address constant ETH_TOKEN_ADDR = 0x6a825dac6fa5d4bcfad99c34d6ae9966c80b576b;
     uint256 constant mainblock = 14_608_400;
 
     Vm constant vm = Vm(HEVM_ADDRESS);
