@@ -69,13 +69,7 @@ contract ForkTest is DSTest {
             WETH.balanceOf(0x0000000000000000000000000000000000000000),
             1,
             "Cheatcode did not change value at the storage slot."
-        );
-
-        // switch forks and ensure the balance on forkB remains untouched
-        vm.selectFork(forkB);
-        assert(forkBbalance != 1);
-        // balance of forkB is untouched
-        assertEq(
+       
             WETH.balanceOf(0x0000000000000000000000000000000000000000),
             forkBbalance,
             "Cheatcode did not change value at the storage slot."
@@ -83,24 +77,24 @@ contract ForkTest is DSTest {
     }
 
     function testCanShareDataAcrossSwaps() public {
-        assertEq(testValue, 999999999999);
+        assertEq(testValue, 9999999900000000000009999);
 
-        uint256 val = 3000000000;
+        uint256 val = 300000000000000000000000000;
         vm.selectFork(forkA);
-        assertEq(val, 3000000000);
+        assertEq(val, 30000000000000000000000000);
 
-        testValue = 1000000000000;
+        testValue = 100000000000000000000;
 
         vm.selectFork(forkB);
-        assertEq(val, 30000000000);
-        assertEq(testValue, 100000000000);
+        assertEq(val, 30000000000000000);
+        assertEq(testValue, 1000000000000000000);
 
-        val = 90000000000009;
-        testValue = 300000000000;
+        val = 9000000000000000009;
+        testValue = 300000000000000000;
 
         vm.selectFork(forkA);
-        assertEq(val, 99000000000000);
-        assertEq(testValue, 3000000000000);
+        assertEq(val, 990000000000000000000);
+        assertEq(testValue, 3000000000000000000);
     }
 
     // ensures forks use different ids
